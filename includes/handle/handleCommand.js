@@ -7,7 +7,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
   return async function ({ event }) {
     const dateNow = Date.now()
     const time = moment.tz("Asia/Ho_Chi_minh").format("HH:MM:ss DD/MM/YYYY");
-    const { allowInbox, PREFIX, ADMINBOT, NDH, DeveloperMode, adminOnly, keyAdminOnly, ndhOnly,adminPaOnly } = global.config;
+    const { allowInbox, PREFIX, ADMINBOT, NDH, DeveloperMode, adminOnly, keyAdminOnly, ndhOnly, adminPaOnly } = global.config;
     const { userBanned, threadBanned, threadInfo, threadData, commandBanned } = global.data;
     const { commands, cooldowns } = global.client;
     var { body, senderID, threadID, messageID } = event;
@@ -17,9 +17,9 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
     const prefixRegex = new RegExp(`^(<@!?${senderID}>|${escapeRegex((threadSetting.hasOwnProperty("PREFIX")) ? threadSetting.PREFIX : PREFIX)})\\s*`);
     if (!prefixRegex.test(body)) return;
     const adminbot = require('./../../config.json');
-//// admin -pa /////
-    if(!global.data.allThreadID.includes(threadID) && !ADMINBOT.includes(senderID) && adminbot.adminPaOnly == true)
-    return api.sendMessage("[ 𝐌𝐎𝐃𝐄 ] - 𝐂𝐡𝐢̉ 𝐚𝐝𝐦𝐢𝐧 𝐛𝐨𝐭 𝐦𝐨̛́𝐢 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 𝐛𝐨𝐭 𝐭𝐫𝐨𝐧𝐠 𝐜𝐡𝐚𝐭 𝐫𝐢𝐞̂𝐧𝐠 ❤️", threadID, messageID)
+    //// admin -pa /////
+    if (!global.data.allThreadID.includes(threadID) && !ADMINBOT.includes(senderID) && adminbot.adminPaOnly == true)
+      return api.sendMessage("[ 𝐌𝐎𝐃𝐄 ] - 𝐂𝐡𝐢̉ 𝐚𝐝𝐦𝐢𝐧 𝐛𝐨𝐭 𝐦𝐨̛́𝐢 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 𝐛𝐨𝐭 𝐭𝐫𝐨𝐧𝐠 𝐜𝐡𝐚𝐭 𝐫𝐢𝐞̂𝐧𝐠 ❤️", threadID, messageID)
     ////end 
     if (!ADMINBOT.includes(senderID) && adminbot.adminOnly == true) {
       if (!ADMINBOT.includes(senderID) && adminbot.adminOnly == true) return api.sendMessage('[ 𝐌𝐎𝐃𝐄 ] - 𝐂𝐡𝐢̉ 𝐚𝐝𝐦𝐢𝐧 𝐛𝐨𝐭 𝐦𝐨̛́𝐢 𝐜𝐨́ 𝐭𝐡𝐞̂̉ 𝐬𝐮̛̉ 𝐝𝐮̣𝐧𝐠 𝐛𝐨𝐭 ❤️', threadID, messageID)
@@ -59,34 +59,36 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
       const commandValues = commands['keys']();
       for (const cmd of commandValues) allCommandName.push(cmd)
       const moment = require("moment-timezone");
-  const noleak = moment.tz("Asia/Ho_Chi_Minh").format("(DD/MM/YYYY)  (HH:mm:ss)");
+      const noleak = moment.tz("Asia/Ho_Chi_Minh").format("(DD/MM/YYYY)  (HH:mm:ss)");
       const timeStart = Date.now();
       const res = await axios.get(`https://baodapchai.quangbao04.repl.co/poem/cadao`);
-var tpk = res.data.data;
-      const time = process.uptime(); 
+      var tpk = res.data.data;
+      const time = process.uptime();
       var anh = Math.floor(time / (60 * 60));
-	var la = Math.floor((time % (60 * 60)) / 60);
-	var vtoan = Math.floor(time % 60);
+      var la = Math.floor((time % (60 * 60)) / 60);
+      var vtoan = Math.floor(time % 60);
       const checker = stringSimilarity.findBestMatch(commandName, allCommandName);
       if (checker.bestMatch.rating >= 0.5) command = client.commands.get(checker.bestMatch.target);
-      else return api.sendMessage({body: global.getText("handleCommand", "commandNotExist", checker.bestMatch.target, noleak, tpk,anh,la,vtoan,timeStart,), attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://baodapchai.quangbao04.repl.co/images/vdcosplay')).data.url,
-method: "GET",
-responseType: "stream"
-})).data
-},event.threadID, event.messageID);
+      else return api.sendMessage({
+        body: global.getText("handleCommand", "commandNotExist", checker.bestMatch.target, noleak, tpk, anh, la, vtoan, timeStart,), attachment: (await global.nodemodule["axios"]({
+          url: 'https://i.imgur.com/uRaWgEP.mp4',
+          method: "GET",
+          responseType: "stream"
+        })).data
+      }, event.threadID, event.messageID);
     }
     if (commandBanned.get(threadID) || commandBanned.get(senderID)) {
       if (!ADMINBOT.includes(senderID)) {
         const banThreads = commandBanned.get(threadID) || [],
           banUsers = commandBanned.get(senderID) || [];
         if (banThreads.includes(command.config.name))
-          return api.sendMessage({body: global.getText("handleCommand", "commandThreadBanned", command.config.name),attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://api.apibot.repl.co/gai')).data.data,
-method: "GET",
-responseType: "stream"
-})).data
-}, threadID, async (err, info) => {
+          return api.sendMessage({
+            body: global.getText("handleCommand", "commandThreadBanned", command.config.name), attachment: (await global.nodemodule["axios"]({
+              url: (await global.nodemodule["axios"]('https://api.apibot.repl.co/gai')).data.data,
+              method: "GET",
+              responseType: "stream"
+            })).data
+          }, threadID, async (err, info) => {
             await new Promise(resolve => setTimeout(resolve, 5 * 1000))
             return api.unsendMessage(info.messageID);
           }, messageID);
@@ -118,19 +120,20 @@ responseType: "stream"
     if (ADMINBOT.includes(senderID.toString())) permssion = 3;
     else if (!ADMINBOT.includes(senderID) && !NDH.includes(senderID) && find) permssion = 1;
     if (command.config.hasPermssion > permssion) return api.sendMessage(global.getText("handleCommand", "permssionNotEnough", command.config.name), event.threadID, event.messageID);
-     
-       if (!client.cooldowns.has(command.config.name)) client.cooldowns.set(command.config.name, new Map());
-  const tp = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
+
+    if (!client.cooldowns.has(command.config.name)) client.cooldowns.set(command.config.name, new Map());
+    const tp = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss");
     const timestamps = client.cooldowns.get(command.config.name);;
     const expirationTime = (command.config.cooldowns || 1) * 1000;
     if (timestamps.has(senderID) && dateNow < timestamps.get(senderID) + expirationTime)
-//return api.sendMessage("[ 𝐌𝐎𝐃𝐄 ] 𝐁𝐚̣𝐧 𝐡𝐢𝐞̣̂𝐧 𝐭𝐫𝐨𝐧𝐠 𝐭𝐡𝐨̛̀𝐢 𝐠𝐢𝐚𝐧 𝐜𝐡𝐨̛̀ ⏳\n𝐭𝐫𝐚́𝐧𝐡 𝐬𝐩𝐚𝐦 𝐛𝐨𝐭 𝐯𝐮𝐢 𝐥𝐨̀𝐧𝐠 𝐭𝐡𝐮̛̉ 𝐥𝐚̣𝐢 𝐬𝐚𝐮 👻", threadID, messageID);
-    return api.sendMessage({body: `=====『 𝗧𝗜𝗠𝗘 𝗖𝗛𝗢̛̀ 𝗟𝗘̣̂𝗡𝗛 』=====\n━━━━━━━━━━━━━━━━━━\n→ lệnh ( ${command.config.name} ) bạn đang sử dụng có thời gian chờ là: ${command.config.cooldowns} giây\n━━━━━━━━━━━━━━━━━━\n→ tránh để bot bị spam bạn vui lòng chờ ${((timestamps.get(senderID) + expirationTime - dateNow)/1000).toString().slice(0, 5)}s và sử dụng lại sao 💙\n\n=====「${tp}」=====`, attachment: (await global.nodemodule["axios"]({
-url: (await global.nodemodule["axios"]('https://baodapchai.quangbao04.repl.co/images/vdcosplay')).data.url,
-method: "GET",
-responseType: "stream"
-})).data
-},threadID, messageID);
+      //return api.sendMessage("[ 𝐌𝐎𝐃𝐄 ] 𝐁𝐚̣𝐧 𝐡𝐢𝐞̣̂𝐧 𝐭𝐫𝐨𝐧𝐠 𝐭𝐡𝐨̛̀𝐢 𝐠𝐢𝐚𝐧 𝐜𝐡𝐨̛̀ ⏳\n𝐭𝐫𝐚́𝐧𝐡 𝐬𝐩𝐚𝐦 𝐛𝐨𝐭 𝐯𝐮𝐢 𝐥𝐨̀𝐧𝐠 𝐭𝐡𝐮̛̉ 𝐥𝐚̣𝐢 𝐬𝐚𝐮 👻", threadID, messageID);
+      return api.sendMessage({
+        body: `=====『 𝗧𝗜𝗠𝗘 𝗖𝗛𝗢̛̀ 𝗟𝗘̣̂𝗡𝗛 』=====\n━━━━━━━━━━━━━━━━━━\n→ lệnh ( ${command.config.name} ) bạn đang sử dụng có thời gian chờ là: ${command.config.cooldowns} giây\n━━━━━━━━━━━━━━━━━━\n→ tránh để bot bị spam bạn vui lòng chờ ${((timestamps.get(senderID) + expirationTime - dateNow) / 1000).toString().slice(0, 5)}s và sử dụng lại sao 💙\n\n=====「${tp}」=====`, attachment: (await global.nodemodule["axios"]({
+          url: 'https://i.imgur.com/uRaWgEP.mp4',
+          method: "GET",
+          responseType: "stream"
+        })).data
+      }, threadID, messageID);
     var getText2;
     if (command.languages && typeof command.languages == 'object' && command.languages.hasOwnProperty(global.config.language))
       getText2 = (...values) => {
