@@ -38,7 +38,7 @@ function startBot(message) {
     });
 };
 
-axios.get("https://raw.githubusercontent.com/baodapchai/qbao_main/mainV2/package.json").then((res) => {
+axios.get("https://raw.githubusercontent.com/YuukiCute/ccjz/main/package.json").then((res) => {
    // logger(res['data']['name'], "[ NAME BOT ]");
    // logger("Version: " + res['data']['version'], "[ VERSION ]");
   //  logger(res['data']['description'], "[ DESCRIPTION ]");
