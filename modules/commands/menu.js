@@ -87,7 +87,7 @@ module.exports.run = async function({
             commandCategory,
             commandsName
         } of data) txt += `${++count}. ${commandCategory}\n[🌸]➜ Tổng có ${commandsName.length} lệnh\n━━━━━━━━━━━━━━━━━━\n`;
-        txt += `[🌸]➩ Hiện có: ${global.client.commands.size} lệnh\n[🌸]➩ Reply từ 1 đến ${data.length} để chọn\n[🌸]➩ Contact: m.me/NHD.JRT.262\n[🌸]➩ Website: https://bio.link/nhdjrt262\n━━━━━━━━━━━━━━━━━━━━━\n[🌸]=== 『 𝐁𝐎𝐓 𝐉𝐑𝐓  』 ===[🌸]`;
+        txt += `[🌸]➩ Hiện có: ${global.client.commands.size} lệnh\n[🌸]➩ Reply từ 1 đến ${data.length} để chọn\n[🌸]➩ Contact: m.me/kiriha.yukii\n[🌸]➩ Website: https://reineowo.com\n━━━━━━━━━━━━━━━━━━━━━\n[🌸]=== 『 Yuuki Chan  』 ===[🌸]`;
         const msg = sendAttachments.status ? {
             body: txt,
             attachment: await images()}: txt;
