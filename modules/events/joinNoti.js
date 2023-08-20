@@ -38,7 +38,7 @@ module.exports.run = async function({ api, event, Users }) {
   let threadName = threadInfo.threadName;
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     api.changeNickname(`[ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "Made by CatalizCS and SpermLord" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
-    return api.sendMessage("", event.threadID, () => api.sendMessage({body:`✅ Kết Nối Vào Nhóm ${threadName} Lúc ${session} Thành Công....\n──────────────────\n→ Tổng lệnh hiện có: ${commands.size}\n→ Dấu lệnh: ${global.config.PREFIX}\n→ Phiên bản: ${global.config.version}\n→ Admin: Nguyễn Công Quang Bảo\n→ Facebook: https://www.facebook.com/quangbao04\n📌 Sử dụng ${global.config.PREFIX}help hoặc ${global.config.PREFIX}menu để xem chi tiết lệnh\n⏰ Thêm bot vào lúc: ${time} || ${thu} `, attachment: fs.createReadStream(__dirname + "/cache/joinbox/joinbox.mp4")}, threadID));
+    return api.sendMessage("", event.threadID, () => api.sendMessage({body:`✅ Kết Nối Vào Nhóm ${threadName} Lúc ${session} Thành Công....\n──────────────────\n→ Tổng lệnh hiện có: ${commands.size}\n→ Dấu lệnh: ${global.config.PREFIX}\n→ Phiên bản: ${global.config.version}\n→ Admin: Yuki Kiriha\n→ Facebook: fb.com/kiriha.yukii\n📌 Sử dụng ${global.config.PREFIX}help hoặc ${global.config.PREFIX}menu để xem chi tiết lệnh\n⏰ Thêm bot vào lúc: ${time} || ${thu} `, attachment: fs.createReadStream(__dirname + "/cache/joinbox/joinbox.mp4")}, threadID));
   }
   else {
     try {
