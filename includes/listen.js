@@ -283,8 +283,8 @@ logger.loader(`Ping load toàn bộ commands và events • ${Date.now() - globa
 	  try { thuebot = JSON.parse(require('fs').readFileSync(process.cwd()+'/modules/commands/data/thuebot.json')); } catch { thuebot = []; };
 	  let find_thuebot = thuebot.find($=>$.t_id == event.threadID);
 	  
-	  if (!find_thuebot)return send(`⛔ Nhóm của bạn chưa thuê bot, Vui lòng thuê bot để tiếp tục sử dụng.\n\nLiên hệ Admin: Nguyễn Công Quang Bảo\nhttps://www.facebook.com/quangbao04`);
-	  if (new Date(form_mm_dd_yyyy(find_thuebot.time_end)).getTime() <= Date.now()+25200000)return send(`⚠️ Nhóm của bạn đã hết hạn thuê bot, Vui lòng thanh toán để tiếp tục gia hạn.\n\nLiên hệ Admin: Công Quang Bảo\nhttps://www.facebook.com/quangbao04`);
+	//   if (!find_thuebot)return send(`⛔ Nhóm của bạn chưa thuê bot, Vui lòng thuê bot để tiếp tục sử dụng.\n\nLiên hệ Admin: Nguyễn Công Quang Bảo\nhttps://www.facebook.com/quangbao04`);
+	//   if (new Date(form_mm_dd_yyyy(find_thuebot.time_end)).getTime() <= Date.now()+25200000)return send(`⚠️ Nhóm của bạn đã hết hạn thuê bot, Vui lòng thanh toán để tiếp tục gia hạn.\n\nLiên hệ Admin: Công Quang Bảo\nhttps://www.facebook.com/quangbao04`);
 	  };
 switch (event.type) {
 	  //switch (event.type) {
