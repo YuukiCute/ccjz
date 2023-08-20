@@ -12,8 +12,8 @@ let eta = 3;
 exports.run = async o=> {
   let send = msg => o.api.sendMessage(msg, o.event.threadID, o.event.messageID);
 
-  if (o.event.type != 'message_reply')return send(`Làm ơn hãy phản hồi hình ảnh nào đó!`);
-  send(`Tiến hành tăng độ phân giải cho ${o.event.messageReply.attachments.length} ảnh (ước tính ${o.event.messageReply.attachments.length*eta}s), chờ xíu ...`);
+  if (o.event.type != 'message_reply')return send(`🌸Vui lòng reply hình ảnh bạn muốn nâng cao chất lượng!🍀`);
+  send(`🌸Tiến hành tăng độ phân giải cho ${o.event.messageReply.attachments.length} ảnh (ước tính ${o.event.messageReply.attachments.length*eta}s), chờ xíu ...🍀`);
 
   let stream = [];
   let exec_time = 0;
@@ -29,7 +29,7 @@ exports.run = async o=> {
   } catch (e) {};
 
   send({
-    body: `Tăng độ phân giải lên 4k hoàn tất☑ (thời gian thực thi ${exec_time/1000<<0}s)`,
+    body: `🌸Tăng độ phân giải lên 4k hoàn tất☑ (thời gian thực thi ${exec_time/1000<<0}s)🍀`,
     attachment: stream,
   });
 };

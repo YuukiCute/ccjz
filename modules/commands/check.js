@@ -122,7 +122,7 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
         let threadInfo = await api.getThreadInfo(threadID);
         if (!threadInfo.adminIDs.some(e => e.id == senderID)) return api.sendMessage("Bạn không có quyền sử dụng lệnh này", threadID);
         if (!threadInfo.isGroup) return api.sendMessage("Chỉ có thể sử dụng trong nhóm", threadID);
-        if (!threadInfo.adminIDs.some(e => e.id == api.getCurrentUserID())) return api.sendMessage("Bot cần qtv để thực hiện lệnh", threadID);
+        // if (!threadInfo.adminIDs.some(e => e.id == api.getCurrentUserID())) return api.sendMessage("Bot cần qtv để thực hiện lệnh", threadID);
         if (!args[1] || isNaN(args[1])) return api.sendMessage("Error", threadID);
         let minCount = args[1],
             allUser = threadInfo.participantIDs;
@@ -137,7 +137,7 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
                             threadData[e].splice(threadData[e].findIndex(e => e.id == user), 1);
                         }
                     }
-                }, 1000);
+                }, 3000);
             }
         }
         return api.sendMessage(`Đã xóa ${allUser.length - threadData.total.filter(e => e.count >= minCount).length} thành viên không đủ ${minCount} lần`, threadID);

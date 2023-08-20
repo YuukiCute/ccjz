@@ -3,7 +3,7 @@ const request = require('request');
 
 const fs = global.nodemodule["fs-extra"]
 
-module.exports.config = {
+exports.config = {
 
   name: "ad",
 
@@ -28,7 +28,7 @@ module.exports.config = {
 }
 
 };
-module.exports.run = async({api,event,args,Users,global,Currencies}) => {
+exports.run = async({api,event,args,Users,global,Currencies}) => {
 
 var callback = () => api.sendMessage(
 
@@ -43,7 +43,7 @@ var callback = () => api.sendMessage(
 [💫]➜ Chiều cao cân nặng: 1m70 x 60 kg
 [❤️]➜ Tên vợ: Nguyễn Bảo Giang
 [🧸]➜ Biệt danh: Ely
-[💥]➜ Ngày sinh: 07/12/2000
+[💥]➜ Ngày sinh: 13/02/2000
 [🌎]➜ Quê quán: Ninh Bình
 [🌸]➜ Tính cách: Chịu~~
 [🌀]➜ Sở thích: Thích Ely!
