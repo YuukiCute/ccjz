@@ -70,7 +70,11 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
       const checker = stringSimilarity.findBestMatch(commandName, allCommandName);
       if (checker.bestMatch.rating >= 0.5) command = client.commands.get(checker.bestMatch.target);
       else return api.sendMessage({
-        body: global.getText("handleCommand", "commandNotExist", checker.bestMatch.target, noleak, tpk, anh, la, vtoan, timeStart,)
+        body: global.getText("handleCommand", "commandNotExist", checker.bestMatch.target, noleak, tpk, anh, la, vtoan, timeStart,), attachment: (await global.nodemodule["axios"]({
+          url: 'https://i.imgur.com/uRaWgEP.mp4',
+          method: "GET",
+          responseType: "stream"
+        })).data
       }, event.threadID, event.messageID);
     }
     if (commandBanned.get(threadID) || commandBanned.get(senderID)) {
