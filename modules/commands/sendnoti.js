@@ -1,49 +1,87 @@
-/*
-» Có lỗi LH FB: fb.com/levy.nam.2k5
-*/
+
 module.exports.config = {
-    name: "sendnoti",
-    version: "1.1.1",
-    hasPermssion: 2,
-    credits: "N1002",
-    description: "Gửi tin nhắn đến tấy cả nhóm và reply để phản hồi",
-    commandCategory: "Admin",
-    usages: "text",
-    cooldowns: 2
+	name: "sendnoti",
+	version: "1.0.2",
+	hasPermssion: 2,
+	credits: "Mirai mod by HĐGN",
+	description: "Gửi tin nhắn tới các nhóm(reply vào ảnh/video cần gửi kèm)!\nPhiên bản xịn hơn của sendnotiUwU",
+	commandCategory: "Admin",
+	usages: "[Text]",
+	cooldowns: 5
 };
+
+module.exports.languages = {
+	"vi": {
+		"sendSuccess": "Đã gửi thánh chỉ tới %1 nhóm",
+		"sendFail": "Không thể gửi thánh chỉ tới %1 nhóm"
+	},
+	"en": {
+		"sendSuccess": "Sent message to %1 thread!",
+		"sendFail": "[!] Can't send message to %1 thread"
+	}
+}
 request = require("request");
 fse = require("fs-extra");
 imageDownload = require("image-downloader");
 moment = require("moment-timezone");
 fullTime = () => moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss - DD/MM/YYYY");
-module.exports.run = async({ api, event, Users, permission }) => {
-    const { threadID: tid, messageID: mid, senderID: sid, attachments: atms, messageReply: mR, type, body, args } = event; 
-    const allTid = global.data.allThreadID || [];
-    const atm = await type == "message_reply" ? mR.attachments : atms.length != 0 ? atms : "nofile";
-    const content = !args[1] ? "chỉ có tệp" : body.slice(body.indexOf(args[1]));
-    if (!args[1] && atm == "nofile") return api.sendMessage(`Bạn chưa nhập nội dung`, tid, mid);
-    var msg = `» Thông Báo Từ Admin «\n──────────────────\n👤 Admin: ${(await Users.getData(sid)).name}\n🌐 Link fb: https://www.facebook.com/profile.php?id=${event.senderID}\n🏘️ Nơi gửi: ${event.isGroup == true ? 'Nhóm ' + global.data.threadInfo.get(event.threadID).threadName: 'từ cuộc trò chuyện riêng với bot'}\n⏰ time: ${fullTime()}\n💬 Nội dung: ${content}\n──────────────────\n✏ Reply tin nhắn này nếu muốn ( phản hồi ) về admin`
-    const uwu = atm == "nofile" ? msg : {
-        body: msg,
-        attachment: await DownLoad(atm)
-    };
-var c1 = 0, c2 = 0;
-    for (var idT of allTid) {
-      var promise = new Promise (async(r1, r2) => {
- await api.sendMessage(uwu, idT, async(e, i) => {
-   if (e) r2(++c2); else r1(++c1)
-      return global.client.handleReply.push({
-            name: this.config.name,
-            messageID: i.messageID,
-            author: sid,
-            type: "userReply"
-        })
-      });
-    })
+
+module.exports.run = async ({ api, event, args, getText, Users }) => {
+  const name = await Users.getNameUser(event.senderID)
+const moment = require("moment-timezone");
+      var gio = moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:s");  
+if (event.type == "message_reply") {
+const request = global.nodemodule["request"];
+const fs = require('fs')
+const axios = require('axios')
+			var getURL = await request.get(event.messageReply.attachments[0].url);
+			
+					var pathname = getURL.uri.pathname;
+var ext = pathname.substring(pathname.lastIndexOf(".") + 1);
+			
+					var path = __dirname + `/cache/snoti`+`.${ext}`;
+
+
+var abc = event.messageReply.attachments[0].url;
+    let getdata = (await axios.get(`${abc}`, { responseType: 'arraybuffer' })).data;
+
+  fs.writeFileSync(path, Buffer.from(getdata, 'utf-8'));
+
+
+	var allThread = global.data.allThreadID || [];
+	var count = 1,
+		cantSend = [];
+	for (const idThread of allThread) {
+		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
+		else {
+			api.sendMessage({body: `» Thông Báo Từ Admin «\n──────────────────\n👤 Admin: ${name}\n🌐 Link fb: https://www.facebook.com/profile.php?id=${event.senderID}\n🏘️ Nơi gửi: ${event.isGroup == true ? 'Nhóm ' + global.data.threadInfo.get(event.threadID).threadName: 'từ cuộc trò chuyện riêng với bot'}\n⏰ time: ${fullTime()}\n💬 Nội dung: ` + args.join(` `) ,attachment: fs.createReadStream(path) }, idThread, (error, info) => {
+				if (error) cantSend.push(idThread);
+			});
+			count++;
+			await new Promise(resolve => setTimeout(resolve, 500));
+		}
+	}
+	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID);
+
+}
+else {
+	var allThread = global.data.allThreadID || [];
+	var count = 1,
+		cantSend = [];
+	for (const idThread of allThread) {
+		if (isNaN(parseInt(idThread)) || idThread == event.threadID) ""
+		else {
+			api.sendMessage(`» Thông Báo Từ Admin «\n──────────────────\n👤 Admin: ${name}\n🌐 Link fb: https://www.facebook.com/profile.php?id=${event.senderID}\n🏘️ Nơi gửi: ${event.isGroup == true ? 'Nhóm ' + global.data.threadInfo.get(event.threadID).threadName: 'từ cuộc trò chuyện riêng với bot'}\n⏰ time: ${fullTime()}\n💬 Nội dung: ` + args.join(` `), idThread, (error, info) => {
+				if (error) cantSend.push(idThread);
+			});
+			count++;
+			await new Promise(resolve => setTimeout(resolve, 500));
+		}
+	}
+	return api.sendMessage(getText("sendSuccess", count), event.threadID, () => (cantSend.length > 0 ) ? api.sendMessage(getText("sendFail", cantSend.length), event.threadID, event.messageID) : "", event.messageID); }
   }
-promise.then(async(r) => api.sendMessage(`Gửi thông báo thành công đến ${r} nhóm`, tid, mid)).catch(async(err) => api.sendMessage(`Không thể gửi thông báo đến ${err} nhóm`, tid, mid))
-};
-module.exports.handleReply = async({ api, event, handleReply: h, Users, Threads }) => {
+
+  module.exports.handleReply = async({ api, event, handleReply: h, Users, Threads }) => {
     const { threadID: tid, messageID: mid, senderID: sid, attachments: atms, body, type } = event;
     const { ADMINBOT } = global.config;
     switch (h.type) {
