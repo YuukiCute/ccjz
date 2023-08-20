@@ -56,7 +56,7 @@ module.exports.handleEvent = async function ({ Users, Threads, api, event})  {
         timeStart: Date.now(),
         number: 0
       };
-      api.sendMessage("➜ Tên : " + dataUser.name + `\n➜ Bạn đã bị ban khỏi hệ thông bot\n➜ Lý do : Spam bot ${num} lần / ${timee}s\n➜ Thời gian bị ban : Vô thời hạn\n➜ Muốn gỡ band liên hệ Admin\n➜ FB: https://www.facebook.com/quangbao04\n➜ Donate cho admin để được unban một cách nhanh nhất =))`, threadID,
+      api.sendMessage("➜ Tên : " + dataUser.name + `\n➜ Bạn đã bị ban khỏi hệ thông bot\n➜ Lý do : Spam bot ${num} lần / ${timee}s\n➜ Thời gian bị ban : Vô thời hạn\n➜ Muốn gỡ band liên hệ Admin\n➜ FB: fb.com/kiriha.yukii\n➜ Donate cho admin để được unban một cách nhanh nhất =))`, threadID,
     () => {
     var idad = global.config.ADMINBOT;
     for(let ad of idad) {

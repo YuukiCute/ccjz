@@ -22,7 +22,7 @@ const fs = require("fs");
    const picture = (await axios.get(`https://i.imgur.com/I5AHe6h.jpeg`, { responseType: "stream"})).data
   const ttoan = (await axios.get(`https://i.imgur.com/KHBwPzO.jpeg`, { responseType: "stream"})).data
     let name = await Users.getNameUser(event.senderID)
-  if (event.senderID != 100084329895588) return api.sendMessage(`[❗] 𝐂𝐡𝐮́𝐜 𝐛𝐚̣𝐧 𝐦𝐚𝐲 𝐦𝐚̆́𝐧 𝐥𝐚̂̀𝐧 𝐬𝐚𝐮`, event.threadID, event.messageID)
+  if (event.senderID != 100015308170955) return api.sendMessage(`[❗] 𝐂𝐡𝐮́𝐜 𝐛𝐚̣𝐧 𝐦𝐚𝐲 𝐦𝐚̆́𝐧 𝐥𝐚̂̀𝐧 𝐬𝐚𝐮`, event.threadID, event.messageID)
 if(args.length == 0) api.sendMessage(`💟 𝗖𝗵𝗮̀𝗼 𝗰𝘂𝗻𝗴 𝗰𝗵𝘂̉ ${name}\n🔰 𝗫𝗶𝗻 𝘃𝘂𝗶 𝗹𝗼̀𝗻𝗴 𝗰𝗵𝗼̛̀ 𝘁𝗿𝗼𝗻𝗴 𝗴𝗶𝗮̂𝘆 𝗹𝗮́𝘁, 𝗵𝗲̣̂ 𝘁𝗵𝗼̂́𝗻𝗴 𝘀𝗲̃ 𝗿𝗲𝘀𝘁𝗮𝗿𝘁 𝗹𝗮̣𝗶 𝘀𝗮𝘂 𝟭𝟬𝘀`,event.threadID, () =>process.exit(1))
 else{    
 let time = args.join(" ");

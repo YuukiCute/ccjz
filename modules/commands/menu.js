@@ -26,9 +26,9 @@ module.exports.config = {
         sendAttachments: {
             status: true,
             // bật/tắt gửi kèm tệp
-            random: true,
+            random: false,
             // tắt random ảnh thì gắn link ảnh bên dưới, bật thì vào home/modules/commands/cache/imagesMenu.json thêm link ảnh
-            url: 'https://1.bp.blogspot.com/-dbi0Mj8dgG4/XnC1-STD8LI/AAAAAAAAY3U/ht2Fm6sCgXwSbdI6qck59HA8QVk4IdGzwCLcBGAsYHQ/s1600/Rung-nui-hung-vy-Diembaogi+%283%29.jpg'
+            url: 'https://raw.githubusercontent.com/YuukiCute/web/main/images/03.jpg'
         }
     }
 };
