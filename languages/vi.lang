@@ -58,18 +58,18 @@ users.needObject=Phải là một Object
 
 # includes/handle/handleCommand.js
 
-handleCommand.userBanned=Hiện tại bạn đang bị cấm sử dụng bot\nLí do: %1\n[⏰] - Thời gian:\n%2 
-handleCommand.threadBanned=Hiện tại nhóm bạn bị cấm sử dụng bot\nLí do: %1\n[⏰] - Thời gian:\n%2
-handleCommand.commandNotExist=Lệnh bạn sử dụng không tồn tại\n─────────\nCó phải là lệnh ( %1 ) hay không? 
-handleCommand.commandThreadBanned=Nhóm bạn đã bị cấm sử dụng lệnh "%1"\nVui lòng liên hệ ADMIN qua:\n📌FB: Https://www.facebook.com/kiriha.yukii
-handleCommand.commandUserBanned=→ Hiện tại bạn đang bị cấm sử dụng bot\n%1\n%2\n→ Vui lòng liên hệ tới Admin để được gỡ ban\n→ 𝗟𝗶𝗻𝗸 𝗔𝗱𝗺𝗶𝗻: m.me/kiriha.yukii 🌸
-handleCommand.threadNotAllowNSFW=→ Nhóm của bạn không được phép sử dụng những lệnh 𝗡𝗦𝗙𝗪\n→ nếu muốn sử dụng hãy liên hệ với Admin 
-handleCommand.cantGetInfoThread=Không thể lấy thông tin của nhóm, lỗi: %1
-handleCommand.permssionNotEnough=→ Xin lỗi bạn không đủ quyền hạn sử dụng lệnh "%1" \n→ nếu muốn sử dụng hãy liên hệ với Admin để được sử dụng
-handleCommand.cantSetMessageReaction=Đã có lỗi xảy ra không mong muốn tại setMessageReaction, lỗi: %1
-handleCommand.notFoundLanguage=Không tìm thấy ngôn ngữ hỗ trợ cho module %1s
-handleCommand.executeCommand=» %1 « Lệnh sử dụng: %2 bởi người dùng: %3 tại nhóm: %4 | Args đi kèm: %5 | Thời gian xử lý: %6ms
-handleCommand.commandError=Đã xảy ra lỗi không mong muốn trong khi thực thi lệnh %1, lỗi: %2
+handleCommand.userBanned=🌸Hiện tại bạn đang bị cấm sử dụng bot\nLí do: %1\n[⏰] - Thời gian:\n%2 🍀
+handleCommand.threadBanned=🌸Hiện tại nhóm bạn bị cấm sử dụng bot\nLí do: %1\n[⏰] - Thời gian:\n%2🍀
+handleCommand.commandNotExist=🌸Lệnh bạn sử dụng không tồn tại. Có phải là lệnh ( %1 ) hay không?🍀🌸 
+handleCommand.commandThreadBanned=🌸Nhóm bạn đã bị cấm sử dụng lệnh "%1"\nVui lòng liên hệ ADMIN qua:\n📌FB: Https://www.facebook.com/kiriha.yukii🍀
+handleCommand.commandUserBanned=→ 🌸Hiện tại bạn đang bị cấm sử dụng bot\n%1\n%2\n→ Vui lòng liên hệ tới Admin để được gỡ ban\n→ 𝗟𝗶𝗻𝗸 𝗔𝗱𝗺𝗶𝗻: m.me/kiriha.yukii 🌸🍀
+handleCommand.threadNotAllowNSFW=→ 🌸Nhóm của bạn không được phép sử dụng những lệnh 𝗡𝗦𝗙𝗪\n→ nếu muốn sử dụng hãy liên hệ với Admin 🍀
+handleCommand.cantGetInfoThread=🌸Không thể lấy thông tin của nhóm, lỗi: %1🍀
+handleCommand.permssionNotEnough=→ 🌸Xin lỗi bạn không đủ quyền hạn sử dụng lệnh "%1" \n→ nếu muốn sử dụng hãy liên hệ với Admin để được sử dụng🍀
+handleCommand.cantSetMessageReaction=🌸Đã có lỗi xảy ra không mong muốn tại setMessageReaction, lỗi: %1🍀
+handleCommand.notFoundLanguage=🌸Không tìm thấy ngôn ngữ hỗ trợ cho module %1s🍀
+handleCommand.executeCommand=🌸» %1 « Lệnh sử dụng: %2 bởi người dùng: %3 tại nhóm: %4 | Args đi kèm: %5 | Thời gian xử lý: %6ms🍀
+handleCommand.commandError=🌸Đã xảy ra lỗi không mong muốn trong khi thực thi lệnh %1, lỗi: %2🍀
 
 # includes/handle/handleCommandEvent.js
 
