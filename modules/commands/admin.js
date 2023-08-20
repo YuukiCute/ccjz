@@ -220,7 +220,7 @@ if (event.senderID != 100015308170955) return api.sendMessage(`[ 𝗠𝗢𝗗�
       case 'alladmonly':
         case '-aadm': {
             //---> CODE ADMIN ONLY<---//
-   if (permssion != 2) return api.sendMessage("[ 𝗠𝗢𝗗𝗘 ] → Cần quyền ADMIN để thực hiện lệnh", threadID, messageID);       
+   if (permssion != 3) return api.sendMessage("[ 𝗠𝗢𝗗𝗘 ] → Cần quyền ADMIN để thực hiện lệnh", threadID, messageID);       
             if (config.alladmOnly == false) {
                 config.alladmOnly = true;
                 api.sendMessage(`[ 𝗠𝗢𝗗𝗘 ] → Kích hoạt thành công chế độ ADMIN cho tất cả các nhóm, chỉ ADMIN được sử dụng Bot`, threadID, messageID);
@@ -250,7 +250,7 @@ if (event.senderID != 100015308170955) return api.sendMessage(`[ 𝗠𝗢𝗗�
         case 'allonly':
         case '-ao': {
             //---> CODE ADMIN ONLY<---//
-          if (permssion != 2) return api.sendMessage("[ 𝗠𝗢𝗗𝗘 ] → Cần quyền ADMIN để thực hiện lệnh", threadID, messageID);
+          if (permssion != 3) return api.sendMessage("[ 𝗠𝗢𝗗𝗘 ] → Cần quyền ADMIN để thực hiện lệnh", threadID, messageID);
             if (config.allspadmOnly == false) {
                 config.allspadmOnly = true;
                 api.sendMessage(`[ 𝗠𝗢𝗗𝗘 ] → Kích hoạt chế độ vô cực thành công cho tất cả các nhóm, chỉ ADMIN được sử dụng Bot`, threadID, messageID);

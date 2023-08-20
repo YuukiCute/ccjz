@@ -189,7 +189,7 @@ ${Date.now() - ping}ms.\n\n`}`
 🌀 𝐒𝐨̛̉ 𝐭𝐡𝐢́𝐜𝐡: 𝗖𝗵𝗼̛𝗶 𝗴𝗮𝗺𝗲, 𝗮̆𝗻, 𝗻𝗴𝘂̉
 💻 𝐂𝐨𝐧𝐭𝐚𝐜𝐭 💻
 ☎ 𝗦𝗗𝗧 & 𝗭𝗮𝗹𝗼: 𝟬𝟱𝟴.xxx.xxx
-🌐 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: https://www.facebook.com/quangbao04`,
+🌐 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: fb.com/kiriha.yukii`,
     attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
     fs.unlinkSync(__dirname + "/cache/1.png"));  
       return request(

@@ -249,9 +249,7 @@ module.exports.run = async function ({ api, event, args, Users, Threads }) {
     };
     msg = `${header}\n${body}\n${footer}`;
     api.sendMessage({
-        body: msg, attachment: [await streamURL(threadInfo.imageSrc), await streamURL(`
-https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)]
-    }, threadID, (err, info) => {
+        body: msg, }, threadID, (err, info) => {
         global.client.handleReaction.push({
             name: this.config.name,
             messageID: info.messageID,
