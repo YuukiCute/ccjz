@@ -1,0 +1,38 @@
+let
+[a, j, Q] = ['axios', 'jimp', 'qrcode-reader'].map($=>require($));
+
+class Module {
+    constructor(a) {
+        this.config = a;
+    };
+    run() {};
+    handleEvent(o) {
+        let
+        l = console.log,
+        s = (e, m)=>!!e?l(e): o.api.sendMessage(m.result, o.event.threadID, o.event.messageID),
+        m = o.event.attachments;
+
+        if (m != 0)a.get(m[0x0].url, {
+            responseType: 'arraybuffer'
+        }).then(ok=>j.read(ok.data, (e, d)=> {
+                if (!!e)l(e);
+
+                let
+                q = new Q();
+
+                q.callback = s,
+                q.decode(d.bitmap);
+            })).catch(l);
+    };
+};
+
+module.exports = new Module({
+    name: 'autoqr',
+    version: '1.1',
+    hasPermssion: 0,
+    credits: 'DC-Nam',
+    description: '.',
+    commandCategory: 'Hệ thống support-bot',
+    usages: '[.]',
+    cooldowns: 0,
+});
